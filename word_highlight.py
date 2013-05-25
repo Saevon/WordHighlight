@@ -111,7 +111,7 @@ class WordHighlightListener(sublime_plugin.EventListener):
 			Pref.prev_selections = None
 			return
 		# todo: The list cast below can go away when Sublime 3's Selection class implements __str__
-		prev_selections = str(list(view.sel()))
+		prev_selections = str([view.word(sel) for sel in view.sel()])
 		if Pref.prev_selections == prev_selections:
 			return
 		else:
